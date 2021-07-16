@@ -1,7 +1,11 @@
 defmodule ListLength do
-  def call([]), do: 0
+  @spec call([number]) :: any
+  def call(list), do: count(list, 0)
 
-  def call([head | tail] = list) do
-    Enum.count(list)
+  def count([], acc), do: acc
+
+  def count([head | tail], acc) do
+    acc = acc + 1
+    count(tail, acc)
   end
 end
